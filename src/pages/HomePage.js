@@ -1,59 +1,76 @@
-import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import React from 'react';
+import { styled } from '@mui/system';
+import { Container, Typography, Button, Grid } from '@mui/material';
+import backgroundImage from '../images/jezael-melgoza-alY6_OpdwRQ-unsplash.jpg'; // Import your background image
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const RootContainer = styled(Container)({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  });
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const ContentContainer = styled(Container)({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%'
+  });
+
+  const ButtonContainer = styled(Grid)({
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1rem' // You can adjust the spacing as needed
+  });
 
   const handleMenuItemClick = (value) => {
     navigate(value);
-    handleClose();
   };
 
   return (
-    <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        variant="contained">
-        CRUD here
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button'
-        }}>
-        <MenuItem value="view" onClick={() => handleMenuItemClick('view')}>
-          View
-        </MenuItem>
-        <MenuItem value="add" onClick={() => handleMenuItemClick('add')}>
-          Add
-        </MenuItem>
-        <MenuItem value="update" onClick={() => handleMenuItemClick('update')}>
-          Update
-        </MenuItem>
-        <MenuItem value="delete" onClick={() => handleMenuItemClick('delete')}>
-          Delete
-        </MenuItem>
-      </Menu>
-    </div>
+    <RootContainer>
+      <ContentContainer>
+        <Typography variant="h4" gutterBottom color="white">
+          Dashboard
+        </Typography>
+        <ButtonContainer container spacing={2}>
+          <Grid item>
+            <Button
+              onClick={() => handleMenuItemClick('add')}
+              variant="contained"
+              color="primary.main">
+              Add
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={() => handleMenuItemClick('update')}
+              variant="contained"
+              color="primary.dark">
+              Update
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button onClick={() => handleMenuItemClick('delete')} variant="contained" color="error">
+              Delete
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button onClick={() => handleMenuItemClick('view')} variant="contained" color="info">
+              View
+            </Button>
+          </Grid>
+        </ButtonContainer>
+      </ContentContainer>
+    </RootContainer>
   );
 }

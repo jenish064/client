@@ -1,32 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/styles';
 import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 import { deleteUserData } from '../redux/action/UsersAction';
 import UpdateUserModal from '../pages/UpdateUserModal';
 
-const useStyles = makeStyles({
-  card: {
-    display: 'flex',
-    marginBottom: '16px'
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  content: {
-    flex: '1 0 auto'
-  },
-  cover: {
-    width: 100,
-    height: 100,
-    borderRadius: '50%',
-    marginRight: '16px'
-  }
-});
-
 const UserCard = (props) => {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const deleteUser = async (id) => {
@@ -43,15 +21,21 @@ const UserCard = (props) => {
   };
 
   return (
-    <Card className={classes.card}>
+    <Card sx={{ display: 'flex', marginBottom: '16px' }}>
       <CardMedia
-        className={classes.cover}
+        sx={{
+          width: 100,
+          height: 100,
+          borderRadius: '50%',
+          marginRight: '16px'
+        }}
+        component="img"
         image={props.avatar}
-        title={`${props.firstName} ${props.lastName}`}
+        alt={`${props.firstName} ${props.lastName}`}
       />
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h2" variant="h5">
+      <div sx={{ display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography variant="h5" component="h2">
             {`${props.firstName} ${props.lastName}`}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
