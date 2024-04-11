@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { fetchUserData } from '../redux/action/UsersAction';
 import UserCard from '../components/UserCard';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function ViewPage() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function ViewPage() {
       <Button onClick={() => navigate('/')} variant="outlined">
         Go to home page
       </Button>
+      <ThemeToggle />
       {state.usersList.map((user, index) => (
         <UserCard
           key={index}

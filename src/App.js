@@ -1,30 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './App.css';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { lightTheme, darkTheme } from './theme';
 import HomePage from './pages/HomePage';
 import ViewPage from './pages/ViewPage';
 import AddPage from './pages/AddPage';
 import ErrorPage from './pages/ErrorPage';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      contrastText: '#EEEEEE',
-      main: '#00f6ff',
-      dark: '#222831',
-      light: '#'
-      // Adjust this color to your primary color
-    },
-    secondary: {
-      main: '#00f6ff' // Adjust this color to your secondary color
-    }
-  }
-});
-
 function App() {
+  const theme = useSelector((state) => state.themeReducer.theme);
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <CssBaseline />
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="view" element={<ViewPage />} />
