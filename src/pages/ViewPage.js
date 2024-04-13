@@ -12,7 +12,6 @@ export default function ViewPage() {
   const [state, setState] = useSetState({
     usersList: []
   });
-  const rr = '';
 
   const getUsersList = async () => {
     const response = await fetchUserData();
@@ -30,7 +29,6 @@ export default function ViewPage() {
 
   return (
     <Suspense fallback={<LazyLoading />}>
-      {rr.pk.ss}
       <Button onClick={() => navigate('/')} variant="outlined">
         Go to home page
       </Button>

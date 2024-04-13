@@ -30,7 +30,7 @@ export default function HomePage() {
       <br />
       <br />
       <Typography variant="h4" gutterBottom>
-        Welcome to CRUD page
+        Welcome to User CRUD page
       </Typography>
       <br />
       <ButtonContainer container spacing={2}>
@@ -48,9 +48,9 @@ export default function HomePage() {
       <br />
       <ThemeToggle />
       <br />
-      <Typography gutterBottom>environment: {process.env.REACT_APP_ENV}</Typography>
+      <Typography gutterBottom>Environment: {process.env.REACT_APP_ENV}</Typography>
       <Typography gutterBottom>
-        environment base url: {process.env.REACT_APP_API_BASE_URL}
+        Environment base-URL: {process.env.REACT_APP_API_BASE_URL}
       </Typography>
     </ContentContainer>
   );
