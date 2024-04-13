@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "User CRUD",
+  "name": "User CRUD React APP - Staunchsys react sessions",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
@@ -18,8 +18,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
+  "start_url": "http://localhost:3000",
+  "display": ["fullscreen", "standalone", "minimal-ui", "browser"],
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
