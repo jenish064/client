@@ -1,25 +1,24 @@
-import { Component } from 'react';
-// import React, { Component } from 'react';
-// import ErrorFallback from './ErrorFallback';
+// import { Component } from 'react';
+import React from 'react';
+import ErrorFallback from './ErrorFallback';
 
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
+class ErrorBoundary extends React.Component {
+  state = {
+    errorMessage: ''
+  };
 
   static getDerivedStateFromError(error) {
-    return { hasError: true, error };
+    return { errorMessage: error.toString() };
   }
 
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by error boundary:', error, errorInfo);
+  componentDidCatch(error, info) {
+    this.logErrorToServices(error.toString(), info.componentStack);
   }
 
   render() {
-    if (this.state.hasError) {
-      this.props.routeToErrorPage(this.state.error);
-      // return <ErrorFallback errorMessage={this.state.error} />;
+    if (this.state.errorMessage) {
+      this.props.routeToErrorPage(this.state.errorMessage);
+      return <ErrorFallback errorMessage={this.state.errorMessage} />;
     }
 
     return this.props.children;

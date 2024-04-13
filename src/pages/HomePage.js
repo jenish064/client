@@ -18,7 +18,7 @@ export default function HomePage() {
   const ButtonContainer = styled(Grid)({
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '1rem' // You can adjust the spacing as needed
+    marginTop: '1rem'
   });
 
   const handleMenuItemClick = (value) => {

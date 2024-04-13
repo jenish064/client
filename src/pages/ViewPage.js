@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useMount, useSetState } from 'react-use';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { fetchUserData } from '../redux/action/UsersAction';
 import UserCard from '../components/UserCard';
 import ThemeToggle from '../components/ThemeToggle';
+import LazyLoading from './LazyLoading';
 
 export default function ViewPage() {
   const navigate = useNavigate();
   const [state, setState] = useSetState({
     usersList: []
   });
+  const rr = '';
 
   const getUsersList = async () => {
     const response = await fetchUserData();
@@ -27,8 +29,8 @@ export default function ViewPage() {
   });
 
   return (
-    <div>
-      ViewPage
+    <Suspense fallback={<LazyLoading />}>
+      {rr.pk.ss}
       <Button onClick={() => navigate('/')} variant="outlined">
         Go to home page
       </Button>
@@ -45,6 +47,6 @@ export default function ViewPage() {
           getUsersList={getUsersList}
         />
       ))}
-    </div>
+    </Suspense>
   );
 }

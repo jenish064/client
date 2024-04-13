@@ -22,23 +22,19 @@ function App() {
     setError(error);
   };
 
-  console.log('process:!:!:!', process.env);
-
   return (
-    <>
-      <ErrorBoundary routeToErrorPage={routeToErrorPage}>
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <CssBaseline />
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="view" element={<ViewPage />} />
-            <Route path="add" element={<AddPage />} />
-            <Route path="error-boundary" element={<ErrorFallback errorMessage={error} />} />
-            <Route path="*" element={<ErrorFallback errorMessage={error} />} />
-          </Routes>
-        </ThemeProvider>
-      </ErrorBoundary>
-    </>
+    <ErrorBoundary routeToErrorPage={routeToErrorPage}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <CssBaseline />
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="view" element={<ViewPage />} />
+          <Route path="add" element={<AddPage />} />
+          <Route path="error-boundary" element={<ErrorFallback errorMessage={error} />} />
+          <Route path="*" element={<ErrorFallback errorMessage={error} />} />
+        </Routes>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 

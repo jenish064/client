@@ -10,8 +10,8 @@ export default function ErrorFallback(props) {
   });
 
   useEffect(() => {
-    if (props.errorMessage && props.errorMessage.message) {
-      setState({ errorMessage: props.errorMessage.message });
+    if (props.errorMessage) {
+      setState({ errorMessage: props.errorMessage });
     }
   }, []);
 
